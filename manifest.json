@@ -1,0 +1,22 @@
+{
+  "name": "ChainRun",
+  "short_name": "ChainRun",
+  "description": "Chain multiple LLMs together. Each model covers the others' weaknesses.",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0d0d0d",
+  "background_color": "#0d0d0d",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%230d0d0d'/%3E%3Cpath d='M44 78a30 30 0 0 1 30-30h12a30 30 0 0 1 0 60H74' stroke='%2320b2aa' stroke-width='12' fill='none' stroke-linecap='round'/%3E%3Cpath d='M148 114a30 30 0 0 1-30 30h-12a30 30 0 0 1 0-60h12' stroke='%2320b2aa' stroke-width='12' fill='none' stroke-linecap='round'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='100' fill='%230d0d0d'/%3E%3Cpath d='M116 208a80 80 0 0 1 80-80h32a80 80 0 0 1 0 160h-32' stroke='%2320b2aa' stroke-width='30' fill='none' stroke-linecap='round'/%3E%3Cpath d='M396 304a80 80 0 0 1-80 80h-32a80 80 0 0 1 0-160h32' stroke='%2320b2aa' stroke-width='30' fill='none' stroke-linecap='round'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
