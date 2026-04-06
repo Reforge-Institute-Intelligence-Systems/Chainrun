@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+   ______                            __
+  / ____/___  ____ ___  ____  __  __/ /____  _____
+ / /   / __ \/ __ `__ \/ __ \/ / / / __/ _ \/ ___/
+/ /___/ /_/ / / / / / / /_/ / /_/ / /_/  __/ /
+\____/\____/_/ /_/ /_/ .___/\__,_/\__/\___/_/
+                    /_/
+        Created with Perplexity Computer
+        https://www.perplexity.ai/computer
+-->
+
+<!-- Perplexity Computer Attribution — SEO Meta Tags -->
+<meta name="generator" content="Perplexity Computer">
+<meta name="author" content="Perplexity Computer">
+<meta property="og:see_also" content="https://www.perplexity.ai/computer">
+<link rel="author" href="https://www.perplexity.ai/computer">
+
+<meta charset="UTF-8">
+<meta name="app-version" content="72">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ChainRun">
+<meta name="theme-color" content="#0d0d0d">
+<meta name="description" content="Ask AI anything. Get a better answer. 5 AI models refine your prompt in sequence — each one improves the last.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://chainrun.tech/">
+<meta property="og:title" content="ChainRun — Better AI answers">
+<meta property="og:description" content="5 AI models refine your prompt in sequence. Each one improves the last. Try the free preview chain.">
+<meta property="og:image" content="https://chainrun.tech/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="ChainRun">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ChainRun — Better AI answers">
+<meta name="twitter:description" content="5 AI models refine your prompt in sequence. Each one improves the last.">
+<meta name="twitter:image" content="https://chainrun.tech/og-image.png">
+
+<title>ChainRun — Better AI answers</title>
+
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230d0d0d'/%3E%3Cpath d='M8 13a5 5 0 0 1 5-5h2a5 5 0 0 1 0 10h-2' stroke='%2320b2aa' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cpath d='M24 19a5 5 0 0 1-5 5h-2a5 5 0 0 1 0-10h2' stroke='%2320b2aa' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230d0d0d'/%3E%3Cpath d='M40 73a28 28 0 0 1 28-28h12a28 28 0 0 1 0 56H68' stroke='%2320b2aa' stroke-width='11' fill='none' stroke-linecap='round'/%3E%3Cpath d='M140 107a28 28 0 0 1-28 28h-12a28 28 0 0 1 0-56h12' stroke='%2320b2aa' stroke-width='11' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css?v=105">
+
+<!-- In-memory storage shim for sandboxed environments -->
+<script>
+(function(){
+  try { localStorage.setItem('_t','1'); localStorage.removeItem('_t'); window._store = { get: k => localStorage.getItem(k), set: (k,v) => localStorage.setItem(k,v), remove: k => localStorage.removeItem(k) }; }
+  catch(e) { const m = {}; window._store = { get: k => m[k] || null, set: (k,v) => { m[k] = String(v); }, remove: k => { delete m[k]; } }; }
+})();
+</script>
+</head>
+<body>
+<script>
+// Post-load version check: if app.js is stale but HTML is fresh, force update.
+// Runs after all scripts have loaded.
+window.addEventListener('load', function() {
+  var EXPECTED = 93;
+  // If CR_APP_VERSION (set in app.js) doesn't match, the JS is stale
+  if (typeof CR_APP_VERSION === 'undefined' || CR_APP_VERSION < EXPECTED) {
+    // Don't loop — only try once per session
+    var key = 'cr-force-v' + EXPECTED;
+    if (!sessionStorage.getItem(key)) {
+      sessionStorage.setItem(key, '1');
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          regs.forEach(function(r) { r.unregister(); });
+          caches.keys().then(function(keys) {
+            Promise.all(keys.map(function(k) { return caches.delete(k); })).then(function() {
+              location.reload(true);
+            });
+          });
+        });
+      } else {
+        location.reload(true);
+      }
+    }
+  }
+});
+</script>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SCREEN 1: LANDING PAGE                  -->
+<!-- ═══════════════════════════════════════ -->
+<div class="screen active" id="landing-screen">
+  <div class="gate-screen" id="gate-main">
+    <div class="gate-brand">CHAINRUN.TECH</div>
+    
+    <h1 class="gate-headline">5 AI MODELS.<br>ONE PROMPT.<br>ZERO MERCY.</h1>
+    
+    <p class="gate-sub">Sovereign chain intelligence. Five frontier models execute in sequence — each one audits the last. What takes you 15 minutes across 5 tabs takes 90 seconds here.</p>
+    
+    <div class="gate-divider"></div>
+    
+    <input type="text" class="gate-input" id="gate-code-input" placeholder="ACCESS CODE" autocomplete="off" spellcheck="false">
+    <button class="gate-enter" id="gate-enter-btn" onclick="handleGateEnter()">ENTER</button>
+    
+    <div class="gate-error" id="gate-error"></div>
+    
+    <div class="gate-divider-sm"></div>
+    
+    <p class="gate-alt-text">No code? Verify your status.</p>
+    <button class="gate-discord-btn" id="gate-discord-btn" onclick="handleDiscordVerify()">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+      VERIFY VIA DISCORD
+    </button>
+    <p class="gate-status" id="gate-discord-status" style="display:none"></p>
+    
+    <div class="gate-footer">GENESIS 200 — INVITE ONLY</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SCREEN 2: INSTALL GUIDE                 -->
+<!-- ═══════════════════════════════════════ -->
+<div class="screen" id="install-screen">
+  <div class="install-guide">
+
+    <!-- ── Section 1: Thank You (fills viewport) ── -->
+    <div class="ty-hero">
+      <div class="ty-hero-inner">
+        <div class="ty-check">
+          <svg viewBox="0 0 56 56" fill="none">
+            <circle cx="28" cy="28" r="28" fill="#4ae3a0" opacity="0.12"/>
+            <circle cx="28" cy="28" r="20" fill="#4ae3a0" opacity="0.08"/>
+            <polyline points="18 28 25 35 38 22" fill="none" stroke="#4ae3a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h1 class="ty-title">You're in.</h1>
+        <p class="ty-sub">ChainRun is yours. Five AI models, one prompt, unlimited chains.</p>
+      </div>
+      <div class="ty-scroll-cue ty-scroll-cue-prominent" id="ty-scroll-cue">
+        <span>Two quick steps below to finish setup</span>
+        <div class="ty-scroll-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="22" height="22"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Section 2: Install Guide ── -->
+    <div class="ty-section" id="ty-install-section">
+      <div class="ty-section-label">Install as app</div>
+      <p class="ty-section-desc">Add ChainRun to your home screen for the full native experience.</p>
+
+      <div class="install-platform" id="install-ios">
+        <div class="install-steps">
+          <div class="install-step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <div class="step-label">Tap the Share button in Safari</div>
+              <div class="step-desc">Look for <svg class="inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> at the bottom center of your screen</div>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <div class="step-label">Scroll down and tap</div>
+              <div class="step-desc"><span class="step-highlight"><svg class="inline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Add to Home Screen</span></div>
+            </div>
+          </div>
+          <div class="install-step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <div class="step-label">Tap "Add"</div>
+              <div class="step-desc">ChainRun appears on your home screen — opens like a native app</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="native-install-wrap" id="native-install-btn">
+        <button class="btn-native-install" onclick="triggerNativeInstall()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Install ChainRun
+        </button>
+        <p class="native-install-hint">One tap — adds to your home screen like a native app</p>
+      </div>
+
+      <div class="install-platform" id="install-android">
+        <div class="install-steps">
+          <div class="install-step"><div class="step-num">1</div><div class="step-content"><div class="step-label">Tap the menu button</div><div class="step-desc">The three-dot ⋮ menu in Chrome</div></div></div>
+          <div class="install-step"><div class="step-num">2</div><div class="step-content"><div class="step-label">Tap "Install app"</div><div class="step-desc"><span class="step-highlight">Install app</span> or "Add to Home screen"</div></div></div>
+          <div class="install-step"><div class="step-num">3</div><div class="step-content"><div class="step-label">Confirm</div><div class="step-desc">ChainRun installs to your home screen</div></div></div>
+        </div>
+      </div>
+
+      <div class="install-platform" id="install-desktop">
+        <div class="install-steps">
+          <div class="install-step"><div class="step-num">1</div><div class="step-content"><div class="step-label">Bookmark this page</div><div class="step-desc">Or use Chrome's "Install" button in the address bar</div></div></div>
+        </div>
+      </div>
+
+      <p class="ty-skip-note">You can also install anytime from Settings.</p>
+    </div>
+
+    <!-- ── Section 3: What you have ── -->
+    <div class="ty-section ty-v2">
+      <div class="ty-section-label">What you have</div>
+      <div class="ty-v2-content">
+        <p class="ty-v2-heading">V3 Ultra — included</p>
+        <p class="ty-v2-desc">Self-correcting reflexion chains, adversarial audits, 10 frontier models, community-funded pricing, full cost transparency. Originally announced at $49 — shipped at no extra cost. You already have everything.</p>
+      </div>
+    </div>
+
+    <!-- ── Section 4: Referral (injected by JS) ── -->
+    <div class="ty-section" id="ty-referral" style="display:none"></div>
+
+    <!-- ── Bottom CTA ── -->
+    <div class="ty-bottom-cta">
+      <button class="btn-install-done" onclick="skipInstall()">
+        Open ChainRun
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+
+    <div class="attribution">
+      <a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SCREEN 3: MAIN APP                      -->
+<!-- (Preserved from V1 — loaded from app.js) -->
+<!-- ═══════════════════════════════════════ -->
+<div class="screen" id="app-main">
+<div class="app">
+  <header class="app-header">
+    <h1>CHAINRUN<span class="genesis-badge" id="header-genesis-badge">GENESIS 200</span></h1>
+    <span class="header-subtitle" id="active-profile-label"></span>
+    <div class="rate-ticker" id="rate-ticker" style="display:none"></div>
+  </header>
+
+  <main class="tab-content">
+
+    <!-- ═══ AUTO TAB (main) ═══ -->
+    <section class="tab-panel active" id="tab-auto">
+      <!-- Archive Toggle -->
+      <div class="archive-toggle-row">
+        <button class="archive-toggle-btn" id="archive-toggle-btn" onclick="toggleArchive()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg>
+          <span id="archive-count-label">Archive</span>
+        </button>
+      </div>
+
+      <!-- Archive Panel (hidden by default) -->
+      <div class="archive-panel hidden" id="archive-panel">
+        <div class="archive-header">
+          <span class="archive-title">YOUR RUNS</span>
+          <button class="archive-close-btn" onclick="toggleArchive()">&times;</button>
+        </div>
+        <div class="archive-list" id="archive-list">
+          <div class="archive-empty">No runs yet. Results will appear here after your first chain.</div>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="auto-input">Your prompt</label>
+        <textarea id="auto-input" placeholder="Enter a prompt to run through a multi-LLM chain…" rows="5"></textarea>
+      </div>
+
+      <!-- Mode Toggle + File Upload Row -->
+      <div class="chain-controls">
+        <div class="mode-toggle" id="auto-mode-toggle">
+          <button class="mode-btn" data-mode="fast" title="Budget models, quick answers">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Fast
+          </button>
+          <button class="mode-btn active" data-mode="auto" title="AI picks the best approach">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Auto
+          </button>
+          <button class="mode-btn" data-mode="quality" title="Frontier models, thorough output">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Quality
+          </button>
+        </div>
+        <div class="file-upload-wrap">
+          <input type="file" id="auto-file-input" accept="image/*,.pdf,.txt,.csv,.json" multiple hidden>
+          <button class="file-upload-btn" id="auto-file-btn" onclick="document.getElementById('auto-file-input').click()" title="Attach files">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="file-preview-list hidden" id="auto-file-preview"></div>
+
+      <div class="input-group">
+        <label for="auto-type">Output type</label>
+        <select id="auto-type">
+          <option value="auto">Auto-detect</option>
+          <option value="code">Code</option>
+          <option value="research">Research</option>
+          <option value="creative">Creative</option>
+          <option value="structured">Structured</option>
+          <option value="summary">Summary</option>
+          <option value="stepByStep">Step-by-step</option>
+          <option value="conversational">Conversational</option>
+        </select>
+      </div>
+      <!-- Chaos Mode (Black Swan Stress Test) -->
+      <div class="chaos-row" id="chaos-row">
+        <button class="chaos-toggle" id="chaos-toggle" onclick="toggleChaosMode()">
+          <span class="chaos-icon">&#x1F525;</span>
+          <span class="chaos-label" id="chaos-label">CHAOS MODE</span>
+        </button>
+        <select class="chaos-select hidden" id="chaos-select">
+          <option value="">Select scenario...</option>
+          <option value="LIQUIDITY_CRUNCH">Liquidity Crunch — Top-3 exchange suspends BTC withdrawals</option>
+          <option value="ORACLE_FRACTURE">Oracle Fracture — CME/Spot diverge >15% (HFT glitch)</option>
+          <option value="FED_PIVOT_REVERSAL">Fed Pivot Reversal — Emergency 50bps rate hike</option>
+          <option value="custom">Custom scenario...</option>
+        </select>
+        <input class="chaos-custom-input hidden" id="chaos-custom-input" type="text" placeholder="Describe your Black Swan event..." maxlength="300">
+      </div>
+      <div class="battle-hardened-row hidden" id="battle-hardened-row">
+        <label class="battle-hardened-toggle">
+          <input type="checkbox" id="battle-hardened-check" onchange="updateBattleHardened()">
+          <span class="battle-hardened-label">BATTLE-HARDENED BRIEFING + STRATEGIC ROADMAP</span>
+          <span class="battle-hardened-cost">+1 credit</span>
+        </label>
+      </div>
+
+      <button class="btn btn-primary btn-full" id="auto-run-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Run Chain
+      </button>
+      <div class="credit-alt-row">
+        <span id="credit-balance-badge" style="display:none">0 credits</span>
+        <span>·</span>
+        <button class="credit-alt-btn" onclick="showCreditStore()">Buy run credits</button>
+      </div>
+      <div class="price-drop-tracker" id="price-drop-tracker"></div>
+      <div class="missing-keys-banner hidden mt-12" id="auto-missing-keys"></div>
+
+      <!-- Router Decision Badge -->
+      <div class="router-badge hidden mt-12" id="auto-router-badge">
+        <div class="router-badge-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4ae3a0" stroke-width="2" width="14" height="14"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          <span class="router-badge-title">Smart Router</span>
+        </div>
+        <span class="router-badge-text" id="auto-router-text"></span>
+        <div class="router-caps" id="auto-router-caps"></div>
+      </div>
+
+      <div class="mt-12"><span class="badge hidden" id="auto-intent"></span></div>
+      <div class="hidden mt-12" id="auto-progress">
+        <div class="chain-steps" id="auto-steps"></div>
+      </div>
+      <div class="chain-total hidden" id="auto-total">
+        <span class="chain-total-label">Total chain duration</span>
+        <span class="chain-total-time" id="auto-total-time"></span>
+      </div>
+      <div class="hidden mt-12 output-prompt-row" id="auto-output-prompt-row">
+        <span class="output-prompt-label">YOUR PROMPT</span>
+        <span class="output-prompt-text" id="auto-output-prompt"></span>
+      </div>
+      <div class="hidden mt-12" id="auto-output-section">
+        <div class="output-header">
+          <label>Chain result</label>
+          <div class="output-actions">
+            <button class="btn btn-sm btn-secondary" id="auto-copy-btn" onclick="copyChainOutput()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy
+            </button>
+            <button class="btn btn-sm btn-secondary" id="auto-download-btn" onclick="downloadChainOutput()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download
+            </button>
+          </div>
+        </div>
+        <div class="output-area" id="auto-output"></div>
+        <div class="output-footer">
+          <button class="btn btn-primary btn-run-again" id="auto-run-again-btn" onclick="runAgain()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            Continue chain
+          </button>
+        </div>
+      </div>
+      <div class="attribution"><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></div>
+    </section>
+
+    <!-- ═══ PROFILES TAB ═══ -->
+    <!-- ═══ LEADERBOARD TAB ═══ -->
+    <section class="tab-panel" id="tab-leaderboard">
+      <div class="lb-header">
+        <h2 class="lb-title">Community</h2>
+      </div>
+
+      <!-- Live Feed -->
+      <div class="lb-section">
+        <div class="lb-section-label">Live feed</div>
+        <div class="lb-feed" id="lb-feed">
+          <div class="lb-empty">No activity yet. Be the first to run a chain.</div>
+        </div>
+      </div>
+
+      <!-- Leaderboard -->
+      <div class="lb-section">
+        <div class="lb-section-label">Top contributors</div>
+        <div class="lb-rankings" id="lb-rankings">
+          <div class="lb-empty">Leaderboard populates as the community grows.</div>
+        </div>
+      </div>
+
+      <!-- Cost Recovery -->
+      <div class="lb-section">
+        <div class="lb-section-label">Cost recovery this month</div>
+        <div class="lb-recovery" id="lb-recovery"></div>
+      </div>
+
+      <div class="attribution"><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></div>
+    </section>
+
+    <!-- ═══ SETTINGS TAB ═══ -->
+    <section class="tab-panel" id="tab-settings">
+      <div id="settings-list">
+
+        <!-- Setup Wizard -->
+        <div id="setup-wizard">
+          <!-- Step 1: Select providers -->
+          <div id="wiz-select">
+            <div class="wiz-header">
+              <h2 class="wiz-title">Connect your AI accounts</h2>
+              <p class="wiz-subtitle">Select the providers you have API keys for. ChainRun will detect your available models automatically.</p>
+            </div>
+            <div class="wiz-choices" id="wiz-choices">
+              <label class="wiz-choice"><input type="checkbox" value="openai"><span class="wiz-choice-name">OpenAI</span><span class="wiz-choice-hint">GPT-5.4, o3, DALL·E</span></label>
+              <label class="wiz-choice"><input type="checkbox" value="anthropic"><span class="wiz-choice-name">Anthropic</span><span class="wiz-choice-hint">Claude Opus, Sonnet, Haiku</span></label>
+              <label class="wiz-choice"><input type="checkbox" value="gemini"><span class="wiz-choice-name">Google Gemini</span><span class="wiz-choice-hint">Gemini 3.1 Pro, Flash</span></label>
+              <label class="wiz-choice"><input type="checkbox" value="xai"><span class="wiz-choice-name">xAI / Grok</span><span class="wiz-choice-hint">Grok 4, Grok 3</span></label>
+              <label class="wiz-choice"><input type="checkbox" value="perplexity"><span class="wiz-choice-name">Perplexity</span><span class="wiz-choice-hint">Sonar Deep Research</span></label>
+              <label class="wiz-choice"><input type="checkbox" value="mistral"><span class="wiz-choice-name">Mistral</span><span class="wiz-choice-hint">Large, Small, Codestral</span></label>
+              <label class="wiz-choice"><input type="checkbox" value="openrouter"><span class="wiz-choice-name">OpenRouter</span><span class="wiz-choice-hint">NVIDIA, Xiaomi, MiniMax +100s</span></label>
+            </div>
+            <button class="btn btn-primary btn-full mt-16" onclick="wizStartSetup()">Continue</button>
+            <button class="btn btn-ghost btn-full mt-8" onclick="wizSkipAll()">Skip — I'll do this later</button>
+            <div class="credit-alt-row">
+              <span>No API keys?</span>
+              <button class="credit-alt-btn" onclick="showCreditStore()">Buy run credits instead</button>
+            </div>
+          </div>
+
+          <!-- Step 2: Enter keys one-by-one -->
+          <div id="wiz-setup" style="display:none">
+            <div class="wiz-progress"><div class="wiz-progress-bar" id="wiz-progress-bar"></div></div>
+            <p class="wiz-count" id="wiz-setup-count"></p>
+            <h3 class="wiz-provider" id="wiz-provider-name"></h3>
+            <p class="wiz-hint" id="wiz-provider-hint"></p>
+            <a href="#" id="wiz-open-link" class="btn btn-secondary btn-full" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Open, copy key &amp; come back
+            </a>
+            <p class="wiz-auto-hint" id="wiz-auto-hint">Copy your key there. It auto-fills when you return.</p>
+            <div class="key-input-wrap mt-12">
+              <input type="password" id="wiz-key-input" placeholder="Paste your API key here">
+              <button class="key-paste" onclick="wizPasteKey()" title="Paste">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+              </button>
+            </div>
+            <div id="wiz-key-status" class="mt-8"></div>
+            <div class="wiz-actions mt-16">
+              <button class="btn btn-ghost" onclick="wizSkipProvider()">Skip</button>
+              <button class="btn btn-primary" id="wiz-next-btn" onclick="wizNextProvider()" disabled>Next</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Done -->
+          <div id="wiz-done" style="display:none">
+            <div class="wiz-done-icon">
+              <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="24" fill="#4ae3a0" opacity="0.15"/><polyline points="14 24 21 31 34 18" fill="none" stroke="#4ae3a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h2 class="wiz-title">You're all set</h2>
+            <p class="wiz-subtitle" id="wiz-done-summary"></p>
+            <button class="btn btn-primary btn-full mt-16" onclick="wizFinish()">Start using ChainRun</button>
+            <button class="btn btn-ghost btn-full mt-8" onclick="wizAddMore()">Add more keys</button>
+          </div>
+        </div>
+
+        <!-- Normal Settings (shown when keys exist) -->
+        <div id="settings-normal" style="display:none">
+          <div class="settings-section">
+            <label class="settings-label">API Keys</label>
+            <div id="api-keys-list"></div>
+          </div>
+          <!-- Referral Section -->
+          <div class="settings-section" id="settings-referral" style="display:none">
+            <label class="settings-label">Refer a friend</label>
+            <div id="settings-ref-content"></div>
+          </div>
+
+          <button class="btn btn-ghost btn-full mt-16" onclick="wizRestart()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+            Re-run setup guide
+          </button>
+
+          <!-- Sync Settings -->
+          <div class="settings-section" style="margin-top:32px;border-top:1px solid var(--border);padding-top:16px">
+            <label class="settings-label">Sync settings</label>
+            <p style="font-size:12px;color:var(--text-muted);margin:0 0 12px">Transfer API keys and settings between devices. Data is encrypted with your passphrase.</p>
+            <div style="display:flex;gap:8px;margin-bottom:8px">
+              <input type="text" id="sync-code-input" placeholder="SYNC CODE" autocomplete="off" spellcheck="false" style="flex:1;background:var(--input-bg);border:1px solid var(--border);padding:10px 12px;color:var(--text);font-size:13px;font-family:var(--font);text-transform:uppercase;letter-spacing:0.06em">
+            </div>
+            <div style="display:flex;gap:8px;margin-bottom:10px">
+              <input type="password" id="sync-pass-input" placeholder="PASSPHRASE" style="flex:1;background:var(--input-bg);border:1px solid var(--border);padding:10px 12px;color:var(--text);font-size:13px;font-family:var(--font);letter-spacing:0.04em">
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-primary" onclick="handleSyncPush()" style="flex:1;padding:10px;font-size:12px">EXPORT</button>
+              <button class="btn btn-secondary" onclick="handleSyncPull()" style="flex:1;padding:10px;font-size:12px">IMPORT</button>
+            </div>
+            <div id="sync-status" style="font-size:11px;margin-top:8px;min-height:16px;text-align:center"></div>
+          </div>
+
+          <!-- Restore Purchase -->
+          <div class="settings-section" style="margin-top:24px;border-top:1px solid var(--border);padding-top:16px">
+            <label class="settings-label">Restore purchase</label>
+            <p style="font-size:12px;color:#777;margin:0 0 10px">Switched devices or cleared data? Enter the email you registered to recover your access.</p>
+            <div style="display:flex;gap:8px">
+              <input type="email" id="restore-email-input" placeholder="your@email.com" style="flex:1;background:#111;border:1px solid #222;border-radius:8px;padding:10px 12px;color:#e0e0e0;font-size:13px;font-family:var(--font)">
+              <button class="btn btn-primary" id="restore-btn" onclick="handleRestorePurchase()" style="white-space:nowrap;padding:10px 16px;font-size:13px">Restore</button>
+            </div>
+            <div id="restore-status" style="font-size:12px;margin-top:8px;min-height:18px"></div>
+          </div>
+
+          <!-- Troubleshooting -->
+          <div class="settings-section" style="margin-top:24px;border-top:1px solid #1c1c1c;padding-top:16px">
+            <label class="settings-label" style="color:#555;font-size:11px">Troubleshooting</label>
+            <button class="btn btn-ghost btn-full mt-8" onclick="_forceUpdate()" style="font-size:12px;color:#666">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+              Force refresh &amp; clear cache
+            </button>
+            <p style="font-size:11px;color:#444;text-align:center;margin-top:6px">v74 · Clears cached data and reloads. API keys are preserved.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="attribution"><a href="https://www.perplexity.ai/computer" target="_blank" rel="noopener noreferrer">Created with Perplexity Computer</a></div>
+    </section>
+
+  </main>
+
+  <nav class="tab-bar">
+    <button class="tab-btn active" data-tab="auto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      <span>Auto</span>
+    </button>
+    <button class="tab-btn" data-tab="leaderboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+      <span class="tab-label">Community</span>
+    </button>
+    <button class="tab-btn" data-tab="settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span>Settings</span>
+    </button>
+  </nav>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Profile Modal -->
+  <div class="modal-overlay" id="profile-modal">
+    <div class="modal-sheet">
+      <h3 id="profile-modal-title">New Profile</h3>
+      <div class="input-group">
+        <label for="profile-name-input">Name</label>
+        <input type="text" id="profile-name-input" placeholder="Profile name">
+      </div>
+      <div class="input-group">
+        <label for="profile-prefix-input">Prefix (prepended to every prompt)</label>
+        <textarea id="profile-prefix-input" rows="3" placeholder="Instructions prepended to your prompt..."></textarea>
+      </div>
+      <div class="input-group">
+        <label for="profile-suffix-input">Suffix (appended to every prompt)</label>
+        <textarea id="profile-suffix-input" rows="3" placeholder="Constraints appended to your prompt..."></textarea>
+      </div>
+      <div class="input-group">
+        <label for="profile-llm-input">Default LLM (optional)</label>
+        <select id="profile-llm-input">
+          <option value="">Any</option>
+          <option value="chatgpt">ChatGPT</option>
+          <option value="claude">Claude</option>
+          <option value="perplexity">Perplexity</option>
+          <option value="gemini">Gemini</option>
+          <option value="grok">Grok</option>
+        </select>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="profile-cancel-btn">Cancel</button>
+        <button class="btn btn-primary" id="profile-save-btn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Onboarding Overlay (3 screens) -->
+  <div class="onboard-overlay" id="onboard-overlay">
+    <div class="onboard-slides" id="onboard-slides">
+
+      <!-- Slide 1: The New Standard of Power -->
+      <div class="onboard-slide onboard-slide-active" data-slide="0">
+        <div class="onboard-glow"></div>
+        <div class="onboard-logo">
+          <svg viewBox="0 0 64 64" fill="none" stroke="#4ae3a0" stroke-width="4" stroke-linecap="round">
+            <path d="M10 24a14 14 0 0 1 14-14h5a14 14 0 0 1 0 28h-5"/>
+            <path d="M54 40a14 14 0 0 1-14 14h-5a14 14 0 0 1 0-28h5"/>
+          </svg>
+        </div>
+        <h2 class="onboard-title">The New Standard</h2>
+        <p class="onboard-text">Every question you ask gets processed by up to 5 frontier models — each one specialized for a different phase. Research, reasoning, auditing, refinement. No single AI does this alone.</p>
+        <div class="onboard-chain-visual">
+          <div class="onboard-chain-node"><span class="onboard-node-name">Sonar</span><span class="onboard-node-role onboard-role-discovery">discover</span></div>
+          <span class="onboard-chain-arrow">›</span>
+          <div class="onboard-chain-node"><span class="onboard-node-name">Gemini</span><span class="onboard-node-role onboard-role-logic">reason</span></div>
+          <span class="onboard-chain-arrow">›</span>
+          <div class="onboard-chain-node"><span class="onboard-node-name">Grok</span><span class="onboard-node-role onboard-role-critic">audit</span></div>
+          <span class="onboard-chain-arrow">›</span>
+          <div class="onboard-chain-node"><span class="onboard-node-name">Claude</span><span class="onboard-node-role onboard-role-refiner">refine</span></div>
+          <span class="onboard-chain-arrow">›</span>
+          <div class="onboard-chain-node"><span class="onboard-node-name">GPT-5.4</span><span class="onboard-node-role onboard-role-refiner">polish</span></div>
+        </div>
+        <button class="onboard-next" onclick="onboardNext()">Continue</button>
+      </div>
+
+      <!-- Slide 2: The Death of Hallucinations -->
+      <div class="onboard-slide" data-slide="1">
+        <div class="onboard-audit-visual">
+          <div class="onboard-audit-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" width="48" height="48">
+              <path d="M24 4L4 44h40L24 4z"/>
+              <path d="M24 18v10"/>
+              <circle cx="24" cy="34" r="1.5" fill="#fbbf24"/>
+            </svg>
+          </div>
+          <div class="onboard-audit-flow">
+            <span class="onboard-audit-step">Logic output</span>
+            <span class="onboard-audit-arrow">→</span>
+            <span class="onboard-audit-step onboard-audit-critic">Zero-Trust Audit</span>
+            <span class="onboard-audit-arrow">→</span>
+            <span class="onboard-audit-gate">GATE</span>
+          </div>
+        </div>
+        <h2 class="onboard-title">The Death of Hallucinations</h2>
+        <p class="onboard-text">Grok 4 acts as an adversarial auditor. It cross-references every claim, scores logic quality on a 0-1 scale, and triggers an autonomous re-run if the score is below 0.95. You see the entire process live.</p>
+        <button class="onboard-next" onclick="onboardNext()">Continue</button>
+      </div>
+
+      <!-- Slide 3: Live Transparency -->
+      <div class="onboard-slide" data-slide="2">
+        <div class="onboard-transparency-visual">
+          <div class="onboard-trans-item">
+            <span class="onboard-trans-icon" style="color:#60a5fa">[RESEARCHING]</span>
+            <span class="onboard-trans-desc">Gathering current data...</span>
+          </div>
+          <div class="onboard-trans-item">
+            <span class="onboard-trans-icon" style="color:#fbbf24">[SCRUTINIZING]</span>
+            <span class="onboard-trans-desc">Cross-referencing claims...</span>
+          </div>
+          <div class="onboard-trans-item">
+            <span class="onboard-trans-icon" style="color:#4caf50">[GATE VERIFIED]</span>
+            <span class="onboard-trans-desc">Logic score: 0.97</span>
+          </div>
+        </div>
+        <h2 class="onboard-title">Live Transparency</h2>
+        <p class="onboard-text">You see exactly what each model is doing, what it costs, and why. Every chain shows the work behind the answer — including the full cost breakdown per step.</p>
+        <div class="onboard-paths">
+          <button class="onboard-path" onclick="onboardFinish('keys')">
+            <span class="onboard-path-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </span>
+            <span class="onboard-path-title">Use your API keys</span>
+            <span class="onboard-path-desc">Connect OpenAI, Gemini, Grok, etc.</span>
+          </button>
+          <button class="onboard-path" onclick="onboardFinish('credits')">
+            <span class="onboard-path-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="10"/><path d="M12 6v12"/><path d="M15 9.5a3 3 0 0 0-3-2.5H9a3 3 0 0 0 0 5h3a3 3 0 0 1 0 5H9a3 3 0 0 1-3-2.5"/></svg>
+            </span>
+            <span class="onboard-path-title">Buy run credits</span>
+            <span class="onboard-path-desc">No setup. Price drops as more people use it.</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="onboard-dots" id="onboard-dots">
+      <span class="onboard-dot active"></span>
+      <span class="onboard-dot"></span>
+      <span class="onboard-dot"></span>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script src="./api.js?v=105"></script>
+<script src="./paygate.js?v=105"></script>
+<script src="./app.js?v=105"></script>
+
+</body>
+</html>

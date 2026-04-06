@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChainRun — Updating...</title>
+<style>
+body { background: #0d0d0d; color: #e0e0e0; font-family: -apple-system, sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; }
+.wrap { padding: 32px; }
+h2 { font-size: 20px; margin: 0 0 12px; }
+p { font-size: 14px; color: #888; margin: 0 0 20px; line-height: 1.5; }
+.spinner { width: 32px; height: 32px; border: 3px solid #222; border-top-color: #20b2aa; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="spinner"></div>
+  <h2>Updating ChainRun</h2>
+  <p>Clearing cached data...<br>Your API keys and settings are preserved.</p>
+</div>
+<script>
+(async function() {
+  // 1. Unregister ALL service workers
+  if ('serviceWorker' in navigator) {
+    var regs = await navigator.serviceWorker.getRegistrations();
+    for (var r of regs) { await r.unregister(); }
+  }
+  // 2. Clear ALL caches
+  if ('caches' in window) {
+    var keys = await caches.keys();
+    for (var k of keys) { await caches.delete(k); }
+  }
+  // 3. Redirect to main site
+  setTimeout(function() {
+    window.location.replace('https://chainrun.tech');
+  }, 1500);
+})();
+</script>
+</body>
+</html>
